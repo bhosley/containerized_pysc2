@@ -29,10 +29,11 @@ RUN apt update -yq \
 ARG PASSWORD=iagreetotheeula
 # DL and Unzip Client
 RUN wget https://blzdistsc2-a.akamaihd.net/Linux/SC2.4.10.zip && \
-    unzip -P ${PASSWORD} SC2.4.10.zip -d ~/ && \
+    unzip -uP ${PASSWORD} SC2.4.10.zip -d ~/ && \
     # and map packs
     wget http://blzdistsc2-a.akamaihd.net/MapPacks/Ladder2017Season1.zip && \
-    unzip -P ${PASSWORD} Ladder2017Season1.zip -d ~/StarCraftII/Maps && \
+    unzip -uP ${PASSWORD} Ladder2017Season1.zip -d ~/StarCraftII/Maps && \
+    # -u :updates the files, creating new if necessary, -o :overwrites (does this replace directory content?)
     # delete compressed files
     rm *.zip 
     #\
